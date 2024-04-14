@@ -1,39 +1,25 @@
 <script>
-import axios from "axios";
-import { api, store } from "./store";
+// importo header e footer e projectlist
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+import ProjectList from "./components/ProjectList.vue";
 
 export default {
   data() {
     return {
-      title: "Boolfolio Vue + Vite",
-      store,
+      title: "Boolfolio",
+      author: "Lorenzo Di Santo",
     };
   },
 
-  created() {
-    // chiamata axios al b
-    axios.get(api.url + "projects").then((response) => {
-      // carico i dati nello store
-      store.projects = response.data.data;
-    });
-  },
+  components: { AppHeader, AppFooter, ProjectList },
 };
 </script>
 
 <template>
-  <div class="container">
-    <h1>{{ title }}</h1>
-
-    <!-- stampo lista progetti -->
-    <div v-for="project in store.projects">
-      <ul>
-        <li>{{ project.id }}</li>
-        <li>{{ project.title }}</li>
-        <li>{{ project.description }}</li>
-      </ul>
-      <hr />
-    </div>
-  </div>
+  <app-header :title="title"></app-header>
+  <project-list></project-list>
+  <app-footer :author="author"></app-footer>
 </template>
 
 <style lang="scss">
