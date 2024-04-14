@@ -1,18 +1,20 @@
 <script>
 import axios from "axios";
+import { api, store } from "./store";
 
 export default {
   data() {
     return {
       title: "Boolfolio Vue + Vite",
-      projects: [],
+      store,
     };
   },
 
   created() {
     // chiamata axios al b
-    axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-      this.projects = response.data.data;
+    axios.get(api.url + "projects").then((response) => {
+      // carico i dati nello store
+      store.projects = response.data.data;
     });
   },
 };
@@ -23,7 +25,7 @@ export default {
     <h1>{{ title }}</h1>
 
     <!-- stampo lista progetti -->
-    <div v-for="project in projects">
+    <div v-for="project in store.projects">
       <ul>
         <li>{{ project.id }}</li>
         <li>{{ project.title }}</li>
