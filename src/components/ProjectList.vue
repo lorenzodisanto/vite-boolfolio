@@ -8,14 +8,18 @@ import { api, store } from "../store";
 // importo la Card
 import ProjectCard from "./ProjectCard.vue";
 
+// importo paginazione
+import PaginationUi from "./ui/PaginationUi.vue";
+
 export default {
   data() {
     return {
       store,
+      pageLinks: [],
     };
   },
 
-  components: { ProjectCard },
+  components: { ProjectCard, PaginationUi },
 
   methods: {
     // metodo chiamata api
@@ -23,8 +27,8 @@ export default {
       axios.get(endpoint).then((response) => {
         // carico i dati nello store
         store.projects = response.data.data;
-        // carico i link di paginazione nello store
-        store.pageLinks = response.data.links;
+        // link paginazione
+        this.pageLinks = response.data.links;
       });
     },
   },
@@ -43,24 +47,11 @@ export default {
         <project-card v-for="project in store.projects" :project="project" />
       </div>
 
-      <!-- link paginazione recupero i link dallo store e li ciclo per stamparli-->
-      <div class="mt-4">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end">
-            <li
-              v-for="link in store.pageLinks"
-              @click="fetchProjects(link.url)"
-              :class="{
-                active: link.active,
-                disabled: !link.url,
-              }"
-              class="page-item"
-            >
-              <a class="page-link" href="#" v-html="link.label"></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <!-- link paginazione -->
+      <pagination-ui
+        :pageLinks="pageLinks"
+        @change-page="fetchProjects"
+      ></pagination-ui>
     </div>
   </main>
 </template>

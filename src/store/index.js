@@ -7,5 +7,4 @@ export const api = {
 export const store = reactive({
   // conservo i dati nello store
   projects: [],
-  pageLinks: [],
 });
