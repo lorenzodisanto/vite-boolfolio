@@ -30,6 +30,11 @@ export default {
         <p class="card-text">
           {{ project.description }}
         </p>
+        <router-link
+          :to="{ name: 'project', params: { slug: project.slug } }"
+          class="btn btn-primary"
+          >info</router-link
+        >
       </div>
       <div class="card-footer">
         <small class="text-body-secondary">--- </small>
@@ -40,8 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 .col {
-  z-index: -1;
-
   .cover {
     position: relative;
     .badge.type {
