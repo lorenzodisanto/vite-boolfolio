@@ -2,23 +2,22 @@
 // importo header e footer e projectlist
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
-import ProjectList from "./components/ProjectList.vue";
 
 export default {
   data() {
     return {
-      title: "Boolfolio",
+      title: ".Boolfolio",
       author: "Lorenzo Di Santo",
     };
   },
 
-  components: { AppHeader, AppFooter, ProjectList },
+  components: { AppHeader, AppFooter },
 };
 </script>
 
 <template>
   <app-header :title="title"></app-header>
-  <project-list></project-list>
+  <router-view></router-view>
   <app-footer :author="author"></app-footer>
 </template>
 
