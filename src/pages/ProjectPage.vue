@@ -25,11 +25,13 @@ export default {
   <div class="container my-5">
     <div class="card" v-if="project">
       <div class="card-body">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
+        <h1 :style="'color: ' + project.type.color">
+          {{ project.title }}
+        </h1>
+
         <div class="my-3">
           <span
-            class="badge type fs-6"
+            class="badge type fs-4"
             :style="'background-color: ' + project.type.color"
             >{{ project.type.label }}</span
           >
@@ -37,12 +39,13 @@ export default {
         <div class="my-3">
           <span
             v-for="technology in project.technologies"
-            class="badge rounded-pill me-2"
+            class="badge rounded-pill me-2 fs-6"
             :style="'background-color: ' + technology.color"
           >
             {{ technology.label }}
           </span>
         </div>
+        <p class="fs-5">{{ project.description }}</p>
       </div>
       <img v-if="project.image" :src="project.image" class="img-fluid" />
     </div>
