@@ -43,7 +43,7 @@ export default {
   <main>
     <div class="container my-4">
       <!-- griglia Card -->
-      <div class="row row-cols-3 g-3">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">
         <project-card v-for="project in store.projects" :project="project" />
       </div>
 
