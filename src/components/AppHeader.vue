@@ -11,7 +11,7 @@ export default {
       <div class="container">
         <a class="navbar-brand text-white fs-3" href="#">{{ title }}</a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler border border-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -19,7 +19,7 @@ export default {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon text-white"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
